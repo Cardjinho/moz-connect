@@ -5,47 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página de Investimento</title>
   <style>
-    /* Estilo global */
-    html, body {
+    /* Estilos globais */
+    body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
+      font-family: 'Verdana', sans-serif;
       background-color: #000; /* Fundo preto */
-      font-family: 'Arial', sans-serif;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       overflow: hidden;
     }
 
-    /* Contêiner para os botões */
+    /* Contêiner dos botões */
     .button-container {
       display: flex;
       flex-direction: column;
       gap: 20px; /* Espaçamento entre os botões */
+      align-items: center;
     }
 
     /* Estilo dos botões */
     .button-container button {
-      background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Gradiente moderno */
+      background: linear-gradient(45deg, #ff6f61, #ff3d3d); /* Gradiente moderno */
       color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 15px 30px;
-      font-size: 1rem;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 18px; /* Tamanho da fonte */
       font-weight: bold;
+      letter-spacing: 1px; /* Espaçamento entre as letras */
+      border: none;
+      border-radius: 30px; /* Bordas arredondadas */
+      padding: 15px 30px;
       cursor: pointer;
-      box-shadow: 0px 4px 15px rgba(255, 75, 43, 0.4); /* Sombra para profundidade */
+      box-shadow: 0px 5px 20px rgba(255, 61, 61, 0.5); /* Sombra para profundidade */
       animation: float 2s infinite ease-in-out; /* Animação de flutuação */
-      outline: none;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
     }
 
     /* Efeito ao passar o mouse */
     .button-container button:hover {
-      transform: scale(1.05); /* Leve aumento */
-      box-shadow: 0px 6px 20px rgba(255, 75, 43, 0.6);
+      transform: scale(1.1); /* Leve aumento */
+      box-shadow: 0px 10px 30px rgba(255, 61, 61, 0.8); /* Sombra mais intensa */
     }
 
     /* Animação de flutuação */
@@ -58,22 +61,41 @@
       }
     }
 
-    /* Texto interno dos botões */
-    .button-container button span {
-      font-family: 'Verdana', sans-serif;
-      letter-spacing: 1px; /* Espaçamento entre letras */
+    /* Estilo do FAB (Floating Action Button) */
+    .fab-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+    }
+
+    .fab {
+      width: 60px;
+      height: 60px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center;
+      background-size: contain;
+      background-color: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border: none;
+    }
+
+    .fab:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
-  <!-- Botões flutuantes -->
+  <!-- Botões centrais -->
   <div class="button-container">
-    <button>
-      <span>FAZER INVESTIMENTO CONFIÁVEL</span>
-    </button>
-    <button>
-      <span>EFETUAR COMPRA DE PREDICTOR 100%</span>
-    </button>
+    <button>FAZER INVESTIMENTO CONFIÁVEL</button>
+    <button>EFETUAR COMPRA DE PREDICTOR 100%</button>
+  </div>
+
+  <!-- Botão FAB -->
+  <div class="fab-container">
+    <button class="fab" title="Fale conosco no WhatsApp"></button>
   </div>
 </body>
 </html>
