@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HOME ACTIVITIE</title>
+  <title>Página de Investimento</title>
   <style>
     /* Estilos globais */
     body {
@@ -45,7 +45,16 @@
       outline: none;
     }
 
-    /* Efeito ao passar o mouse */
+    /* Estilo especial para o botão "Criar Conta no Cassino" */
+    .button-container .casino-button {
+      background: linear-gradient(45deg, #4e54c8, #8f94fb); /* Gradiente azul */
+      font-size: 16px; /* Fonte ligeiramente maior */
+      font-weight: bold;
+      border-radius: 20px; /* Bordas mais arredondadas */
+      padding: 15px 25px;
+      box-shadow: 0px 5px 20px rgba(78, 84, 200, 0.5); /* Sombra especial */
+    }
+
     .button-container button:hover {
       transform: scale(1.1); /* Leve aumento */
       box-shadow: 0px 10px 30px rgba(255, 61, 61, 0.8); /* Sombra mais intensa */
@@ -84,6 +93,53 @@
     .fab:hover {
       transform: scale(1.1);
     }
+
+    /* Estilo do diálogo */
+    .dialog-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .dialog {
+      background: white;
+      color: black;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .dialog h2 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #4e54c8;
+    }
+
+    .dialog p {
+      font-size: 14px;
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    .dialog button {
+      background: linear-gradient(45deg, #4e54c8, #8f94fb);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -91,6 +147,7 @@
   <div class="button-container">
     <button onclick="sendInvestmentMessage()">FAZER INVESTIMENTO CONFIÁVEL</button>
     <button onclick="sendPredictorMessage()">EFETUAR COMPRA DE PREDICTOR 100%</button>
+    <button class="casino-button" onclick="redirectToCasino()">CRIAR CONTA NO CASSINO</button>
   </div>
 
   <!-- Botão FAB -->
@@ -98,7 +155,22 @@
     <button class="fab" title="Fale conosco no WhatsApp" onclick="redirectToWhatsApp()"></button>
   </div>
 
+  <!-- Diálogo de boas-vindas -->
+  <div class="dialog-overlay" id="dialog">
+    <div class="dialog">
+      <h2>BEM-VINDO 🚨</h2>
+      <p>APROVEITE HOJE PARA GANHAR UM PREDICTOR AVIATOR 100% GRATUITO SEM NENHUM CUSTO ADICIONAL.</p>
+      <p>CLICA NO BOTÃO DE REGISTRAR NO CASSINO E FAÇA UM DEPÓSITO DE NO MÍNIMO 100MT.☑️<br><br>NB: PARA O PREDICTOR GRÁTIS FUNCIONAR DEVE CRIAR CONTA NOVA E FAZER DEPÓSITO.</p>
+      <button onclick="closeDialog()">FECHAR 💬</button>
+    </div>
+  </div>
+
   <script>
+    // Fecha o diálogo
+    function closeDialog() {
+      document.getElementById('dialog').style.display = 'none';
+    }
+
     // Redireciona para o WhatsApp no FAB
     function redirectToWhatsApp() {
       window.open("https://chat.whatsapp.com/Ko7wBblzyuTCtlJZvKA4ua", "_blank");
@@ -141,6 +213,11 @@
       const whatsappUrl = `https://wa.me/258867983175?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, "_blank");
     }
+
+    // Redireciona para criar conta no cassino
+    function redirectToCasino() {
+      window.open("https://acessar.link/receber-bonus", "_blank");
+    }
   </script>
 </body>
-</html>
+  </html>
