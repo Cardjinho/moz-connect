@@ -3,90 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animação de Carregamento</title>
+  <title>Página de Investimento</title>
   <style>
-    /* Configuração geral */
+    /* Estilo global */
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      background-color: black;
+      background-color: #000; /* Fundo preto */
+      font-family: 'Arial', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
     }
 
-    /* Estilo da barra de progresso */
-    .progress-bar {
-      width: 0;
-      height: 10px;
-      background-color: red;
-      border-radius: 5px;
-      position: absolute;
+    /* Contêiner para os botões */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px; /* Espaçamento entre os botões */
     }
 
-    /* Estilo do círculo final */
-    .circle {
-      width: 0;
-      height: 0;
-      background-color: red;
-      border-radius: 50%;
-      position: absolute;
-      opacity: 0;
-      transition: width 1s ease, height 1s ease, opacity 1s ease;
+    /* Estilo dos botões */
+    .button-container button {
+      background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Gradiente moderno */
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0px 4px 15px rgba(255, 75, 43, 0.4); /* Sombra para profundidade */
+      animation: float 2s infinite ease-in-out; /* Animação de flutuação */
+      outline: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Animação ativa do círculo */
-    .active {
-      width: 300px;
-      height: 300px;
-      opacity: 1;
+    /* Efeito ao passar o mouse */
+    .button-container button:hover {
+      transform: scale(1.05); /* Leve aumento */
+      box-shadow: 0px 6px 20px rgba(255, 75, 43, 0.6);
+    }
+
+    /* Animação de flutuação */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0); /* Posição inicial */
+      }
+      50% {
+        transform: translateY(-10px); /* Sobe 10px */
+      }
+    }
+
+    /* Texto interno dos botões */
+    .button-container button span {
+      font-family: 'Verdana', sans-serif;
+      letter-spacing: 1px; /* Espaçamento entre letras */
     }
   </style>
 </head>
 <body>
-  <!-- Barra de progresso irregular -->
-  <div class="progress-bar"></div>
-
-  <!-- Círculo final -->
-  <div class="circle"></div>
-
-  <script>
-    const progressBar = document.querySelector('.progress-bar');
-    const circle = document.querySelector('.circle');
-
-    // Função para simular progresso irregular
-    function animateProgress() {
-      let progress = 0;
-      const interval = setInterval(() => {
-        // Incrementos aleatórios entre 5% e 20%
-        progress += Math.random() * 15 + 5;
-
-        if (progress > 100) progress = 100; // Limita a 100%
-        progressBar.style.width = progress + "%";
-
-        if (progress === 100) {
-          clearInterval(interval); // Para o progresso
-          showCircle(); // Mostra o círculo
-        }
-      }, Math.random() * 400 + 300); // Intervalo aleatório entre 300ms e 700ms
-    }
-
-    // Função para exibir o círculo
-    function showCircle() {
-      progressBar.style.display = "none";
-      circle.classList.add('active');
-
-      // Redireciona para a home após 5 segundos
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 5000);
-    }
-
-    // Inicia a animação de progresso
-    animateProgress();
-  </script>
+  <!-- Botões flutuantes -->
+  <div class="button-container">
+    <button>
+      <span>FAZER INVESTIMENTO CONFIÁVEL</span>
+    </button>
+    <button>
+      <span>EFETUAR COMPRA DE PREDICTOR 100%</span>
+    </button>
+  </div>
 </body>
 </html>
