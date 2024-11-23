@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página de Investimento</title>
+  <title>HOME ACTIVITIE</title>
   <style>
     /* Estilos globais */
     body {
@@ -32,12 +32,12 @@
       background: linear-gradient(45deg, #ff6f61, #ff3d3d); /* Gradiente moderno */
       color: white;
       font-family: 'Trebuchet MS', sans-serif;
-      font-size: 18px; /* Tamanho da fonte */
+      font-size: 15px; /* Tamanho da fonte */
       font-weight: bold;
       letter-spacing: 1px; /* Espaçamento entre as letras */
       border: none;
-      border-radius: 30px; /* Bordas arredondadas */
-      padding: 15px 30px;
+      border-radius: 15px; /* Bordas arredondadas */
+      padding: 10px 20px; /* Redução do tamanho */
       cursor: pointer;
       box-shadow: 0px 5px 20px rgba(255, 61, 61, 0.5); /* Sombra para profundidade */
       animation: float 2s infinite ease-in-out; /* Animação de flutuação */
@@ -69,8 +69,8 @@
     }
 
     .fab {
-      width: 60px;
-      height: 60px;
+      width: 50px; /* Redução do tamanho */
+      height: 50px; /* Redução do tamanho */
       background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center;
       background-size: contain;
       background-color: #25D366;
@@ -89,13 +89,58 @@
 <body>
   <!-- Botões centrais -->
   <div class="button-container">
-    <button>FAZER INVESTIMENTO CONFIÁVEL</button>
-    <button>EFETUAR COMPRA DE PREDICTOR 100%</button>
+    <button onclick="sendInvestmentMessage()">FAZER INVESTIMENTO CONFIÁVEL</button>
+    <button onclick="sendPredictorMessage()">EFETUAR COMPRA DE PREDICTOR 100%</button>
   </div>
 
   <!-- Botão FAB -->
   <div class="fab-container">
-    <button class="fab" title="Fale conosco no WhatsApp"></button>
+    <button class="fab" title="Fale conosco no WhatsApp" onclick="redirectToWhatsApp()"></button>
   </div>
+
+  <script>
+    // Redireciona para o WhatsApp no FAB
+    function redirectToWhatsApp() {
+      window.open("https://chat.whatsapp.com/Ko7wBblzyuTCtlJZvKA4ua", "_blank");
+    }
+
+    // Envia mensagem para WhatsApp para fazer investimento
+    function sendInvestmentMessage() {
+      const now = new Date();
+      const hour = now.getHours();
+      let greeting;
+
+      if (hour >= 6 && hour < 12) {
+        greeting = "Bom dia";
+      } else if (hour >= 12 && hour < 18) {
+        greeting = "Boa tarde";
+      } else {
+        greeting = "Boa noite";
+      }
+
+      const message = `${greeting} Mentor, Quero investir.`;
+      const whatsappUrl = `https://wa.me/258867983175?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
+    }
+
+    // Envia mensagem para WhatsApp para comprar o predictor
+    function sendPredictorMessage() {
+      const now = new Date();
+      const hour = now.getHours();
+      let greeting;
+
+      if (hour >= 6 && hour < 12) {
+        greeting = "Bom dia";
+      } else if (hour >= 12 && hour < 18) {
+        greeting = "Boa tarde";
+      } else {
+        greeting = "Boa noite";
+      }
+
+      const message = `${greeting} Quero comprar o bot predictor. Quanto custa?`;
+      const whatsappUrl = `https://wa.me/258867983175?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
+    }
+  </script>
 </body>
 </html>
