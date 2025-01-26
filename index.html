@@ -4,101 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web-App de Investimentos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        /* Tela de carregamento */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .spinner {
-            width: 80px;
-            height: 80px;
-            border: 8px solid #fff;
-            border-top: 8px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1.5s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Estilização do diálogo */
-        #welcome-dialog {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 400px;
-            font-family: Arial, sans-serif;
-        }
-
-        #welcome-dialog h1 {
-            color: #333;
-            font-size: 24px;
-        }
-
-        #welcome-dialog p {
-            color: #555;
-            margin: 20px 0;
-        }
-
-        #accept-btn {
-            background: #3498db;
-            color: #fff;
-            border: none;
-            padding: 15px 25px;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        #accept-btn:hover {
-            background: #217dbb;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-<body>
+<body class="bg-gray-900 flex items-center justify-center h-screen">
+
     <!-- Tela de carregamento -->
-    <div id="loading-screen">
-        <div class="spinner"></div>
+    <div id="loading-screen" class="fixed top-0 left-0 w-full h-full bg-black flex items-center justify-center z-50">
+        <div class="flex flex-col items-center gap-4">
+            <div class="w-20 h-20 border-8 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            <p class="text-white text-lg font-semibold">Carregando...</p>
+        </div>
     </div>
 
     <!-- Diálogo de boas-vindas -->
-    <div id="welcome-dialog">
-        <h1>Olá, seja bem-vindo ao nosso Web-app de investimentos</h1>
-        <p>Invista com segurança conosco e receba seu retorno em apenas 35 minutos.</p>
-        <button id="accept-btn">Aceitar e entrar</button>
+    <div id="welcome-dialog" class="hidden bg-white rounded-lg shadow-lg max-w-md p-8 text-center">
+        <i class="fas fa-piggy-bank text-blue-500 text-6xl mb-4"></i>
+        <h1 class="text-2xl font-bold text-gray-800">Bem-vindo ao nosso Web-app de Investimentos</h1>
+        <p class="text-gray-600 mt-4">
+            Invista com segurança conosco e receba seu retorno em apenas <span class="text-blue-500 font-bold">35 minutos</span>.
+        </p>
+        <button id="accept-btn" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all">
+            Aceitar e entrar
+        </button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Animação de carregamento usando GSAP
-            gsap.to(".spinner", { rotation: 360, repeat: -1, duration: 1 });
+            gsap.to(".animate-spin", { rotation: 360, repeat: -1, duration: 1 });
 
             // Simulação de tempo de carregamento
             setTimeout(() => {
                 gsap.to("#loading-screen", { opacity: 0, duration: 1, onComplete: () => {
                     document.getElementById('loading-screen').style.display = 'none';
-                    document.getElementById('welcome-dialog').style.display = 'block';
+                    document.getElementById('welcome-dialog').classList.remove('hidden');
+                    gsap.from("#welcome-dialog", { scale: 0.8, opacity: 0, duration: 1 });
                 }});
             }, 3000);
 
@@ -108,5 +50,6 @@
             });
         });
     </script>
+
 </body>
-            </html>
+</html>
