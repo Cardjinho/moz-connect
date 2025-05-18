@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carregando...</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .loader-container {
+      text-align: center;
+      color: #aaa;
+    }
+
+    .bar-outer {
+      width: 320px;
+      height: 6px;
+      background: #222;
+      border-radius: 50px;
+      overflow: hidden;
+      margin: 20px auto;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+
+    .bar-inner {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #ff0040, #ff7300);
+      border-radius: 50px;
+      animation: fillBar 6s ease-in-out forwards;
+    }
+
+    @keyframes fillBar {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+
+    .percentage {
+      font-size: 14px;
+      margin-top: 5px;
+      letter-spacing: 1px;
+      color: #777;
+    }
+
+    .spribe-text {
+      font-size: 12px;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="loader-container">
+    <div class="bar-outer">
+      <div class="bar-inner" id="bar"></div>
+    </div>
+    <div class="percentage" id="percent">0%</div>
+    <div class="spribe-text">Powered by Spribe Engine</div>
+  </div>
+
+  <script>
+    const percent = document.getElementById('percent');
+    let value = 0;
+
+    const interval = setInterval(() => {
+      value += 1;
+      percent.textContent = `${value}%`;
+      if (value >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 300);
+      }
+    }, 60); // 100 * 60ms = 6000ms (6 segundos)
+  </script>
+</body>
+  </html>
