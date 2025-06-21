@@ -3,7 +3,7 @@ const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 
 // ✅ SUA CHAVE DE API (OpenAI)
-const API_KEY = "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";
+const API_KEY = "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";
 
 // Adiciona mensagem ao chat
 function addMessage(text, isUser) {
