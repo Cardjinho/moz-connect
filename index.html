@@ -32,13 +32,13 @@
             color: var(--branco);
             margin: 0;
             padding: 0;
-            padding-top: 70px;
+            padding-top: 60px;
         }
         
         /* Cabeçalho */
         header {
             background-color: var(--preto);
-            padding: 15px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--cinza);
             position: fixed;
             width: 100%;
@@ -55,76 +55,69 @@
         
         .logo h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-size: 24px;
             margin: 0;
             color: var(--dourado);
         }
         
         .logo-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
+            width: 25px;
+            height: 25px;
+            margin-right: 8px;
             background-image: url('icone.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
         
-        /* Carrossel */
+        /* Carrossel Compacto */
         .carrossel {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
+            height: 30px;
+            width: calc(100% - 20px);
+            margin: 10px auto;
             overflow: hidden;
-            border-radius: 10px;
+            position: relative;
+            border-radius: 5px;
             border: 1px solid var(--cinza);
         }
         
-        .slide {
-            display: none;
-            width: 100%;
-            position: relative;
+        .slides-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
         }
         
-        .slide.active {
-            display: block;
+        .slide {
+            min-width: 100%;
+            height: 100%;
         }
         
         .slide img {
             width: 100%;
-            display: block;
-        }
-        
-        .slide-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
             height: 100%;
-            z-index: 10;
+            object-fit: cover;
         }
         
-        /* Botões Superiores */
+        /* Botões Superiores (Lado a Lado) */
         .botoes-topo {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 30px auto;
-            max-width: 1200px;
+            gap: 10px;
+            margin: 10px auto;
+            width: calc(100% - 20px);
         }
         
         .botao {
-            flex: 1;
-            max-width: 300px;
-            padding: 15px;
+            width: 120px;
+            padding: 6px;
             text-align: center;
-            border-radius: 10px;
-            font-weight: 700;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
             border: 1px solid var(--cinza);
             background-color: var(--preto);
             color: var(--branco);
+            transition: all 0.3s;
         }
         
         .botao:hover {
@@ -132,98 +125,96 @@
             color: var(--preto);
         }
         
-        /* Produtos */
+        /* Seção de Produtos (2x3) */
         .produtos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: calc(100% - 20px);
+            margin: 20px auto;
         }
         
         .produto {
             background-color: var(--preto);
             border: 1px solid var(--vermelho);
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 10px;
             text-align: center;
         }
         
         .produto img {
             width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 5px;
+            margin-bottom: 8px;
         }
         
         .produto h3 {
+            font-size: 14px;
             color: var(--dourado);
-            margin: 10px 0;
+            margin: 5px 0;
         }
         
         .produto .preco {
+            font-size: 16px;
             font-weight: 700;
-            font-size: 20px;
-            margin: 10px 0;
+            margin: 5px 0;
         }
         
         .produto .botao-produto {
             display: block;
-            padding: 10px;
+            padding: 5px;
+            font-size: 12px;
             background-color: var(--vermelho);
             color: var(--branco);
-            border-radius: 5px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 15px;
+            margin-top: 8px;
         }
         
         /* Rodapé */
         footer {
             background-color: var(--preto);
-            padding: 40px 20px;
+            padding: 20px 10px;
             text-align: center;
             border-top: 1px solid var(--cinza);
-            margin-top: 50px;
+            margin-top: 20px;
         }
         
         .contatos {
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         
         .contatos a {
             color: var(--branco);
-            margin: 0 10px;
-            font-size: 24px;
+            margin: 0 8px;
+            font-size: 20px;
         }
         
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background-color: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 24px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        @media (max-width: 768px) {
-            .botoes-topo {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .botao {
-                width: 100%;
-            }
+        /* Efeitos Visuais */
+        .produto:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
     </style>
 </head>
@@ -238,17 +229,19 @@
     
     <!-- Carrossel -->
     <div class="carrossel">
-        <div class="slide active">
-            <img src="50%.png" alt="Promoção 50%">
-            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
-        </div>
-        <div class="slide">
-            <img src="vip1.png" alt="VIP 1">
-            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
-        </div>
-        <div class="slide">
-            <img src="vip2.png" alt="VIP 2">
-            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+        <div class="slides-container">
+            <div class="slide">
+                <img src="50%.png" alt="Promoção 50%">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
+            <div class="slide">
+                <img src="vip1.png" alt="VIP 1">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
+            <div class="slide">
+                <img src="vip2.png" alt="VIP 2">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
         </div>
     </div>
     
@@ -304,18 +297,20 @@
     </div>
     
     <!-- Segundo Carrossel -->
-    <div class="carrossel" style="margin-top: 50px;">
-        <div class="slide active">
-            <img src="50%.png" alt="Promoção 50%">
-            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
-        </div>
-        <div class="slide">
-            <img src="vip1.png" alt="VIP 1">
-            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
-        </div>
-        <div class="slide">
-            <img src="vip2.png" alt="VIP 2">
-            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+    <div class="carrossel" style="margin-top: 15px;">
+        <div class="slides-container">
+            <div class="slide">
+                <img src="50%.png" alt="Promoção 50%">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
+            <div class="slide">
+                <img src="vip1.png" alt="VIP 1">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
+            <div class="slide">
+                <img src="vip2.png" alt="VIP 2">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
         </div>
     </div>
     
@@ -327,9 +322,9 @@
             <a href="https://api.whatsapp.com/send?phone=258871009140"><i class="fab fa-whatsapp"></i></a>
         </div>
         
-        <p>Termos e Condições | Política de Reembolso 100%</p>
+        <p style="font-size: 12px;">Termos e Condições | Política de Reembolso 100%</p>
         
-        <a href="https://api.whatsapp.com/send?phone=258871009140&text=DENUNCIAR%20FRAUDE" class="botao" style="display: inline-block; margin-top: 20px;">DENUNCIAR FRAUDES / BURLADOR</a>
+        <a href="https://api.whatsapp.com/send?phone=258871009140&text=DENUNCIAR%20FRAUDE" class="botao" style="display: inline-block; margin-top: 10px; font-size: 12px; padding: 5px 10px;">DENUNCIAR FRAUDES</a>
     </footer>
     
     <!-- Botão Flutuante do WhatsApp -->
@@ -338,21 +333,18 @@
     </a>
     
     <script>
-        // Carrossel Automático
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        // Controle do Carrossel
+        let currentIndex = 0;
+        const containers = document.querySelectorAll('.slides-container');
         
-        function showSlide() {
-            slides.forEach(slide => slide.classList.remove('active'));
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-            setTimeout(showSlide, 5000); // Muda a cada 5 segundos
+        function moveSlide() {
+            currentIndex = (currentIndex + 1) % 3;
+            containers.forEach(container => {
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            });
         }
         
-        // Inicia ambos os carrosséis
-        document.querySelectorAll('.carrossel').forEach(carrossel => {
-            setTimeout(showSlide, 5000);
-        });
+        setInterval(moveSlide, 3000);
     </script>
 </body>
-        </html>
+    </html>
