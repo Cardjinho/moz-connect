@@ -1,578 +1,357 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-MZ">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviator Premium Tools | Robôs de Alta Performance</title>
-    <meta name="description" content="Ferramentas premium para Aviator, incluindo ROBO B99, AVIATOR PREMIUM 1.9 e AVIATOR BOT PARA APPLE. Maximize seus ganhos com nossos robôs especializados.">
+    <title>MOz Aviator Robô | Ferramentas Premium</title>
     
-    <!-- Favicon e Meta Tags para Pesquisa -->
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#0a0a2a">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aviatorpremiumtools.com/">
-    <meta property="og:title" content="Aviator Premium Tools | Robôs de Alta Performance">
-    <meta property="og:description" content="Ferramentas premium para Aviator, incluindo ROBO B99, AVIATOR PREMIUM 1.9 e AVIATOR BOT PARA APPLE.">
-    <meta property="og:image" content="https://aviatorpremiumtools.com/images/og-image.jpg">
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://aviatorpremiumtools.com/">
-    <meta property="twitter:title" content="Aviator Premium Tools | Robôs de Alta Performance">
-    <meta property="twitter:description" content="Ferramentas premium para Aviator, incluindo ROBO B99, AVIATOR PREMIUM 1.9 e AVIATOR BOT PARA APPLE.">
-    <meta property="twitter:image" content="https://aviatorpremiumtools.com/images/og-image.jpg">
-    
-    <!-- Fontes Personalizadas -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Ícones Font Awesome -->
+    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #0a0a2a;
-            --secondary: #d4af37;
-            --accent: #1e90ff;
-            --light: #f8f9fa;
-            --dark: #212529;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --preto: #000000;
+            --cinza: #2A2A2A;
+            --vermelho: #FF0000;
+            --dourado: #D4AF37;
+            --branco: #FFFFFF;
         }
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f5f5f5;
-            color: var(--dark);
-            line-height: 1.6;
+            background-color: var(--preto);
+            color: var(--branco);
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Luxuoso */
+        /* Cabeçalho */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, #1a1a4a 100%);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background-color: var(--preto);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--cinza);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo h1 {
             font-family: 'Playfair Display', serif;
             font-size: 28px;
-            font-weight: 700;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
+            margin: 0;
+            color: var(--dourado);
         }
         
-        .logo i {
+        .logo-icon {
+            width: 30px;
+            height: 30px;
             margin-right: 10px;
-            font-size: 32px;
+            background-image: url('icone.png');
+            background-size: contain;
+            background-repeat: no-repeat;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        /* Carrossel */
+        .carrossel {
             position: relative;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s ease;
-        }
-        
-        nav ul li a:hover:after {
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid var(--cinza);
         }
         
-        /* Hero Section */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1620287341711-0d4b1ab7a6a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
+        .slide {
+            display: none;
+            width: 100%;
             position: relative;
-            margin-top: 70px;
         }
         
-        .hero:before {
-            content: '';
+        .slide.active {
+            display: block;
+        }
+        
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+        
+        .slide-link {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 10, 42, 0.7);
+            z-index: 10;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
+        /* Botões Superiores */
+        .botoes-topo {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px auto;
+            max-width: 1200px;
         }
         
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 72px;
+        .botao {
+            flex: 1;
+            max-width: 300px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .hero p {
-            font-size: 22px;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 15px 30px;
-            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--secondary);
+            transition: all 0.3s;
+            border: 1px solid var(--cinza);
+            background-color: var(--preto);
+            color: var(--branco);
         }
         
-        .btn:hover {
-            background: transparent;
-            color: var(--secondary);
+        .botao:hover {
+            background-color: var(--dourado);
+            color: var(--preto);
         }
         
         /* Produtos */
-        .products {
-            padding: 100px 0;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--secondary);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .products-grid {
+        .produtos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         
-        .product-card {
-            background: white;
+        .produto {
+            background-color: var(--preto);
+            border: 1px solid var(--vermelho);
             border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .product-image {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-        
-        .product-info {
-            padding: 30px;
-        }
-        
-        .product-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .product-info p {
-            margin-bottom: 20px;
-            color: #666;
-        }
-        
-        .product-price {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        
-        .product-features {
-            margin-bottom: 25px;
-        }
-        
-        .product-features li {
-            list-style: none;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .product-features li i {
-            color: var(--secondary);
-            margin-right: 10px;
-        }
-        
-        .btn-product {
-            display: block;
+            padding: 20px;
             text-align: center;
-            background: var(--primary);
-            color: white;
-            padding: 12px;
+        }
+        
+        .produto img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .produto h3 {
+            color: var(--dourado);
+            margin: 10px 0;
+        }
+        
+        .produto .preco {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        
+        .produto .botao-produto {
+            display: block;
+            padding: 10px;
+            background-color: var(--vermelho);
+            color: var(--branco);
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            margin-top: 15px;
         }
         
-        .btn-product:hover {
-            background: var(--secondary);
-            color: var(--primary);
-        }
-        
-        /* Footer */
+        /* Rodapé */
         footer {
-            background: var(--primary);
+            background-color: var(--preto);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--cinza);
+            margin-top: 50px;
+        }
+        
+        .contatos {
+            margin-bottom: 30px;
+        }
+        
+        .contatos a {
+            color: var(--branco);
+            margin: 0 10px;
+            font-size: 24px;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
             color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s ease;
         }
         
-        .social-links a:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 14px;
-        }
-        
-        /* Responsivo */
         @media (max-width: 768px) {
-            .header-container {
+            .botoes-topo {
                 flex-direction: column;
+                align-items: center;
             }
             
-            nav ul {
-                margin-top: 20px;
-            }
-            
-            nav ul li {
-                margin-left: 15px;
-                margin-right: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 48px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .section-title h2 {
-                font-size: 36px;
+            .botao {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Cabeçalho -->
     <header>
-        <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-robot"></i>
-                <span>Aviator Premium</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#products">Produtos</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                </ul>
-            </nav>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <h1>MOz Aviator Robô</h1>
         </div>
     </header>
     
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="container">
-                <h1>Ferramentas Premium para Aviator</h1>
-                <p>Maximize seus ganhos com nossos robôs especializados desenvolvidos com tecnologia de ponta para oferecer os melhores resultados no mercado.</p>
-                <a href="#products" class="btn">Ver Produtos</a>
-            </div>
+    <!-- Carrossel -->
+    <div class="carrossel">
+        <div class="slide active">
+            <img src="50%.png" alt="Promoção 50%">
+            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
         </div>
-    </section>
+        <div class="slide">
+            <img src="vip1.png" alt="VIP 1">
+            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+        </div>
+        <div class="slide">
+            <img src="vip2.png" alt="VIP 2">
+            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+        </div>
+    </div>
+    
+    <!-- Botões Superiores -->
+    <div class="botoes-topo">
+        <a href="https://api.whatsapp.com/send?phone=258871009140&text=Ol%C3%A1%20gostaria%20de%20Fazer%20compra%20de%20d%C3%B3lares%20no%20Paypal" class="botao">COMPRAR PAYPAL</a>
+        <a href="https://www.mediafire.com/file/us88vrnqoqlygn1/BOT+AVIATOR+GRATUITO_1.0.apk/file" class="botao">BAIXAR ROBO GRATIS</a>
+    </div>
     
     <!-- Produtos -->
-    <section class="products" id="products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nossos Robôs</h2>
-            </div>
-            
-            <div class="products-grid">
-                <!-- Produto 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1478&q=80" alt="ROBO B99">
-                    </div>
-                    <div class="product-info">
-                        <h3>ROBO B99</h3>
-                        <p>O mais avançado robô para Aviator, com taxa de acerto superior a 85% e análise em tempo real.</p>
-                        <div class="product-price">R$ 1.299,00</div>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check"></i> Alta precisão (85%+ de acerto)</li>
-                            <li><i class="fas fa-check"></i> Suporte 24/7</li>
-                            <li><i class="fas fa-check"></i> Atualizações gratuitas</li>
-                            <li><i class="fas fa-check"></i> Compatível com Windows/Mac</li>
-                        </ul>
-                        <a href="#" class="btn-product">Comprar Agora</a>
-                    </div>
-                </div>
-                
-                <!-- Produto 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AVIATOR PREMIUM 1.9">
-                    </div>
-                    <div class="product-info">
-                        <h3>AVIATOR PREMIUM 1.9</h3>
-                        <p>Versão premium com algoritmos de IA para previsão precisa e estratégias personalizadas.</p>
-                        <div class="product-price">R$ 899,00</div>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check"></i> Inteligência Artificial integrada</li>
-                            <li><i class="fas fa-check"></i> Estratégias personalizáveis</li>
-                            <li><i class="fas fa-check"></i> Relatórios detalhados</li>
-                            <li><i class="fas fa-check"></i> Fácil instalação</li>
-                        </ul>
-                        <a href="#" class="btn-product">Comprar Agora</a>
-                    </div>
-                </div>
-                
-                <!-- Produto 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1526&q=80" alt="AVIATOR BOT PARA APPLE">
-                    </div>
-                    <div class="product-info">
-                        <h3>AVIATOR BOT PARA APPLE</h3>
-                        <p>Versão exclusiva para dispositivos Apple com interface otimizada e desempenho superior.</p>
-                        <div class="product-price">R$ 1.099,00</div>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check"></i> Exclusivo para macOS/iOS</li>
-                            <li><i class="fas fa-check"></i> Interface premium</li>
-                            <li><i class="fas fa-check"></i> Integração com iCloud</li>
-                            <li><i class="fas fa-check"></i> Baixo consumo de bateria</li>
-                        </ul>
-                        <a href="#" class="btn-product">Comprar Agora</a>
-                    </div>
-                </div>
-            </div>
+    <div class="produtos">
+        <div class="produto">
+            <img src="b99.jpeg" alt="BOT B99">
+            <h3>BOT B99</h3>
+            <div class="preco">250.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20BOT%20B99%0AVALOR%3A%20250.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
         </div>
-    </section>
+        
+        <div class="produto">
+            <img src="predictor.jpeg" alt="BOT GRATUITO">
+            <h3>BOT GRATUITO</h3>
+            <div class="preco">GRATUITO</div>
+            <a href="https://www.mediafire.com/file/us88vrnqoqlygn1/BOT+AVIATOR+GRATUITO_1.0.apk/file" class="botao-produto">BAIXAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <img src="lampada.jpeg" alt="B99 LÂMPADA">
+            <h3>B99 LÂMPADA</h3>
+            <div class="preco">400.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20B99%20L%C3%82MPADA%0AVALOR%3A%20400.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <img src="predictor.jpeg" alt="AVIATOR PREDICTOR">
+            <h3>AVIATOR PREDICTOR</h3>
+            <div class="preco">1000.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20AVIATOR%20PREDICTOR%0AVALOR%3A%201000.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <img src="venom.jpeg" alt="BOT VENOM">
+            <h3>BOT VENOM</h3>
+            <div class="preco">500.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20BOT%20VENOM%0AVALOR%3A%20500.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <img src="predictor.jpeg" alt="ROBÔ CYBER">
+            <h3>ROBÔ CYBER</h3>
+            <div class="preco">450.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20ROB%C3%94%20CYBER%0AVALOR%3A%20450.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+    </div>
     
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Aviator Premium</h3>
-                    <p>Ferramentas de alta performance para maximizar seus ganhos no Aviator. Tecnologia avançada e suporte especializado.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Produtos</h3>
-                    <ul>
-                        <li><a href="#">ROBO B99</a></li>
-                        <li><a href="#">AVIATOR PREMIUM 1.9</a></li>
-                        <li><a href="#">AVIATOR BOT PARA APPLE</a></li>
-                        <li><a href="#">Pacote Completo</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Links Úteis</h3>
-                    <ul>
-                        <li><a href="#">Termos de Serviço</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Tutoriais</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contato</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> contato@aviatorpremium.com</li>
-                        <li><i class="fas fa-phone"></i> +55 (11) 99999-9999</li>
-                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Aviator Premium Tools. Todos os direitos reservados.</p>
-            </div>
+    <!-- Segundo Carrossel -->
+    <div class="carrossel" style="margin-top: 50px;">
+        <div class="slide active">
+            <img src="50%.png" alt="Promoção 50%">
+            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
         </div>
+        <div class="slide">
+            <img src="vip1.png" alt="VIP 1">
+            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+        </div>
+        <div class="slide">
+            <img src="vip2.png" alt="VIP 2">
+            <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+        </div>
+    </div>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="contatos">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=258871009140"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <p>Termos e Condições | Política de Reembolso 100%</p>
+        
+        <a href="https://api.whatsapp.com/send?phone=258871009140&text=DENUNCIAR%20FRAUDE" class="botao" style="display: inline-block; margin-top: 20px;">DENUNCIAR FRAUDES / BURLADOR</a>
     </footer>
     
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://api.whatsapp.com/send?phone=258871009140" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <script>
-        // Smooth scrolling para links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Carrossel Automático
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
         
-        // Efeito de scroll no header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
+        function showSlide() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            setTimeout(showSlide, 5000); // Muda a cada 5 segundos
+        }
+        
+        // Inicia ambos os carrosséis
+        document.querySelectorAll('.carrossel').forEach(carrossel => {
+            setTimeout(showSlide, 5000);
         });
     </script>
 </body>
