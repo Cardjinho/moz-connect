@@ -35,7 +35,7 @@
             padding-top: 70px;
         }
         
-        /* Cabeçalho Moderno */
+        /* Cabeçalho */
         header {
             background: linear-gradient(135deg, var(--preto) 0%, #1a1a1a 100%);
             padding: 15px 0;
@@ -70,7 +70,7 @@
             background-repeat: no-repeat;
         }
         
-        /* Carrossel Ajustado */
+        /* Carrossel */
         .carrossel {
             height: 180px;
             width: calc(100% - 40px);
@@ -98,9 +98,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            cursor: pointer;
         }
         
-        /* Botões Superiores Melhorados */
+        /* Botões Superiores */
         .botoes-topo {
             display: flex;
             justify-content: center;
@@ -129,7 +130,7 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
         
-        /* Seção de Produtos Atualizada */
+        /* Seção de Produtos */
         .produtos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -196,7 +197,7 @@
             transform: scale(1.05);
         }
         
-        /* Rodapé Moderno */
+        /* Rodapé */
         footer {
             background: #111;
             padding: 30px 20px;
@@ -246,7 +247,7 @@
             100% { transform: scale(1); }
         }
         
-        /* Efeitos de Navegação */
+        /* Navegação do Carrossel */
         .carrossel-nav {
             position: absolute;
             top: 50%;
@@ -273,6 +274,78 @@
             right: 15px;
         }
         
+        /* Popup de Anúncio */
+        .popup-anuncio {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            border: 1px solid var(--dourado);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            animation: slideUp 0.5s ease-out;
+            display: none; /* Inicialmente oculto */
+        }
+        
+        @keyframes slideUp {
+            from { bottom: -100px; opacity: 0; }
+            to { bottom: 20px; opacity: 1; }
+        }
+        
+        .popup-imagem {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .popup-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .popup-conteudo {
+            flex: 1;
+        }
+        
+        .popup-texto {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .popup-botao {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--dourado), #f1c40f);
+            color: #000;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .fechar-popup {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
         /* Responsividade */
         @media (max-width: 768px) {
             .carrossel {
@@ -281,6 +354,16 @@
             
             .produtos {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .popup-anuncio {
+                width: 95%;
+                padding: 10px;
+            }
+            
+            .popup-imagem {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -299,7 +382,7 @@
         <button class="carrossel-nav carrossel-prev">❮</button>
         <div class="slides-container">
             <div class="slide">
-                <img src="888.jpeg" alt="Promoção">
+                <img src="50%.png" alt="Promoção 50%">
                 <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
             </div>
             <div class="slide">
@@ -342,7 +425,7 @@
         
         <div class="produto">
             <div class="produto-img-container">
-                <img src="lampadas.png" alt="B99 LÂMPADA">
+                <img src="lampada.jpeg" alt="B99 LÂMPADA">
             </div>
             <h3>B99 LÂMPADA</h3>
             <div class="preco">400.00 MT</div>
@@ -382,7 +465,7 @@
         <button class="carrossel-nav carrossel-prev">❮</button>
         <div class="slides-container">
             <div class="slide">
-                <img src="888.jpeg" alt="Promoção">
+                <img src="50%.png" alt="Promoção 50%">
                 <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
             </div>
             <div class="slide">
@@ -395,6 +478,20 @@
             </div>
         </div>
         <button class="carrossel-nav carrossel-next">❯</button>
+    </div>
+    
+    <!-- Popup de Anúncio -->
+    <div class="popup-anuncio" id="popupAnuncio">
+        <button class="fechar-popup" id="fecharPopup">×</button>
+        <div class="popup-imagem">
+            <img src="vip1.png" alt="Anúncio">
+        </div>
+        <div class="popup-conteudo">
+            <div class="popup-texto">
+                Ganhe até 500% de bônus no seu primeiro depósito! Registre-se agora e comece a ganhar.
+            </div>
+            <a href="https://www.placard.co.mz/#/" class="popup-botao">REGISTRAR</a>
+        </div>
     </div>
     
     <!-- Rodapé -->
@@ -430,6 +527,7 @@
                 container.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
             
+            // Navegação por botões
             nextBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % totalSlides;
                 updateSlide();
@@ -440,6 +538,13 @@
                 updateSlide();
             });
             
+            // Navegação por clique nas imagens
+            slides.forEach((slide, index) => {
+                slide.querySelector('img').addEventListener('click', () => {
+                    window.location.href = "https://www.placard.co.mz/#/";
+                });
+            });
+            
             // Auto-rotate
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % totalSlides;
@@ -447,20 +552,36 @@
             }, 5000);
         });
         
-        // Efeito de digitação no título (opcional)
-        const title = document.querySelector('.logo h1');
-        const originalText = title.textContent;
-        title.textContent = '';
+        // Popup de Anúncio
+        const popup = document.getElementById('popupAnuncio');
+        const fecharPopup = document.getElementById('fecharPopup');
         
-        let i = 0;
-        const typingEffect = setInterval(() => {
-            if (i < originalText.length) {
-                title.textContent += originalText.charAt(i);
-                i++;
-            } else {
-                clearInterval(typingEffect);
-            }
-        }, 100);
+        // Mostrar popup após 3 segundos
+        setTimeout(() => {
+            popup.style.display = 'flex';
+        }, 3000);
+        
+        // Fechar popup
+        fecharPopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+        
+        // Mensagens motivacionais aleatórias
+        const mensagens = [
+            "Junte-se a milhares de vencedores! Registre-se agora e ganhe um bônus exclusivo.",
+            "Seu próximo grande prêmio está esperando! Crie sua conta e comece hoje mesmo.",
+            "Oportunidade única! Cadastre-se agora e receba 100% de bônus no primeiro depósito.",
+            "Transforme pequenas apostas em grandes ganhos! Registre-se para começar."
+        ];
+        
+        // Selecionar mensagem aleatória
+        const mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+        document.querySelector('.popup-texto').textContent = mensagemAleatoria;
+        
+        // Selecionar imagem aleatória do carrossel para o popup
+        const imagensCarrossel = ['50%.png', 'vip1.png', 'vip2.png'];
+        const imagemAleatoria = imagensCarrossel[Math.floor(Math.random() * imagensCarrossel.length)];
+        document.querySelector('.popup-imagem img').src = imagemAleatoria;
     </script>
 </body>
-            </html>
+    </html>
