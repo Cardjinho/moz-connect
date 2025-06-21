@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOz Anúncios Premium | Ferramentas para Cassinos</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Biblioteca de Efeitos -->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    
+    <style>
+        :root {
+            --preto: #000000;
+            --cinza: #2A2A2A;
+            --vermelho: #FF0000;
+            --dourado: #D4AF37;
+            --branco: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--preto);
+            color: var(--branco);
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
+            overflow-x: hidden;
+        }
+        
+        /* Cabeçalho Glitch */
+        header {
+            background: linear-gradient(135deg, var(--preto) 0%, #1a1a1a 100%);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin: 0;
+            background: linear-gradient(to right, var(--dourado), #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .logo h1::before, .logo h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, var(--dourado), #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo h1::before {
+            animation: glitch-effect 3s infinite linear alternate-reverse;
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+        }
+        
+        .logo h1::after {
+            animation: glitch-effect 2s infinite linear alternate-reverse;
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+        }
+        
+        @keyframes glitch-effect {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            10% { clip: rect(112px, 9999px, 76px, 0); }
+            20% { clip: rect(85px, 9999px, 77px, 0); }
+            30% { clip: rect(27px, 9999px, 97px, 0); }
+            40% { clip: rect(64px, 9999px, 98px, 0); }
+            50% { clip: rect(61px, 9999px, 85px, 0); }
+            60% { clip: rect(99px, 9999px, 114px, 0); }
+            70% { clip: rect(34px, 9999px, 115px, 0); }
+            80% { clip: rect(98px, 9999px, 129px, 0); }
+            90% { clip: rect(43px, 9999px, 96px, 0); }
+            100% { clip: rect(82px, 9999px, 64px, 0); }
+        }
+        
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 10px;
+            background-image: url('icone.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+        
+        /* Contador de Ganhos */
+        .contador-ganhos {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            border: 1px solid var(--dourado);
+            max-width: 300px;
+            animation: pulse 2s infinite;
+        }
+        
+        .contador-ganhos p {
+            margin: 0;
+            font-size: 18px;
+            color: var(--dourado);
+        }
+        
+        .contador-ganhos i {
+            margin-right: 8px;
+        }
+        
+        /* Carrossel Premium */
+        .carrossel {
+            height: 200px;
+            width: calc(100% - 40px);
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px;
+            border: 1px solid var(--dourado);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+        
+        .slides-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        
+        /* Navegação do Carrossel */
+        .carrossel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.7);
+            color: var(--preto);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            border: none;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .carrossel-nav:hover {
+            background: var(--dourado);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carrossel-prev {
+            left: 15px;
+        }
+        
+        .carrossel-next {
+            right: 15px;
+        }
+        
+        /* Barra de Progresso de Oferta */
+        .limite-container {
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 15px auto;
+            max-width: 300px;
+            text-align: center;
+            border: 1px solid var(--vermelho);
+        }
+        
+        .limite-texto {
+            color: var(--branco);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .limite-bar {
+            height: 10px;
+            background: linear-gradient(90deg, var(--vermelho), var(--dourado));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Seção de Produtos */
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            width: calc(100% - 40px);
+            margin: 30px auto;
+        }
+        
+        .produto {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .produto:hover {
+            transform: translateY(-5px);
+            border-color: var(--dourado);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+        
+        .produto-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--vermelho);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .produto-img-container {
+            width: 100%;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            border: 1px solid #333;
+        }
+        
+        .produto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .produto:hover img {
+            transform: scale(1.05);
+        }
+        
+        .produto h3 {
+            font-size: 16px;
+            color: var(--dourado);
+            margin: 8px 0;
+        }
+        
+        .produto .preco {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+        
+        .produto .botao-produto {
+            display: block;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--vermelho), #c0392b);
+            color: var(--branco);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .produto .botao-produto:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+        }
+        
+        /* FAQ Interativo */
+        .faq-container {
+            width: calc(100% - 40px);
+            margin: 30px auto;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        
+        .faq-titulo {
+            text-align: center;
+            color: var(--dourado);
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .faq-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .faq-pergunta {
+            width: 100%;
+            padding: 15px 0;
+            text-align: left;
+            background: none;
+            border: none;
+            color: var(--branco);
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-pergunta i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-pergunta i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-resposta {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 10px;
+            color: #ccc;
+        }
+        
+        .faq-item.active .faq-resposta {
+            max-height: 300px;
+            padding-bottom: 15px;
+        }
+        
+        /* Popup de Anúncio */
+        .popup-anuncio {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            border: 1px solid var(--dourado);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            animation: slideUp 0.5s ease-out;
+            display: none;
+        }
+        
+        @keyframes slideUp {
+            from { bottom: -100px; opacity: 0; }
+            to { bottom: 20px; opacity: 1; }
+        }
+        
+        .popup-imagem {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid var(--dourado);
+        }
+        
+        .popup-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .popup-conteudo {
+            flex: 1;
+        }
+        
+        .popup-texto {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .popup-botao {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--dourado), #f1c40f);
+            color: #000;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .fechar-popup {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        /* Botão Flutuante do WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .carrossel {
+                height: 150px;
+            }
+            
+            .produtos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .popup-anuncio {
+                width: 95%;
+                padding: 10px;
+            }
+            
+            .popup-imagem {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com Efeito Glitch -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <h1 data-text="MOz Anúncios Premium">MOz Anúncios Premium</h1>
+        </div>
+    </header>
+    
+    <!-- Contador de Ganhos em Tempo Real -->
+    <div class="contador-ganhos">
+        <p><i class="fas fa-coins"></i> <span id="ganhos">+12.450,00 MT</span> hoje por <span id="usuarios">128</span> usuários</p>
+    </div>
+    
+    <!-- Carrossel Premium -->
+    <div class="carrossel">
+        <button class="carrossel-nav carrossel-prev">❮</button>
+        <div class="slides-container">
+            <div class="slide">
+                <img src="50%.png" alt="Promoção 50%">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
+            <div class="slide">
+                <img src="vip1.png" alt="VIP 1">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
+            <div class="slide">
+                <img src="vip2.png" alt="VIP 2">
+                <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
+            </div>
+        </div>
+        <button class="carrossel-nav carrossel-next">❯</button>
+    </div>
+    
+    <!-- Barra de Progresso de Oferta -->
+    <div class="limite-container">
+        <p class="limite-texto">Últimas 3 licenças disponíveis com 30% OFF!</p>
+        <div class="limite-bar" style="width: 30%;"></div>
+    </div>
+    
+    <!-- Botões Superiores -->
+    <div class="botoes-topo">
+        <a href="https://api.whatsapp.com/send?phone=258871009140&text=Ol%C3%A1%20gostaria%20de%20Fazer%20compra%20de%20d%C3%B3lares%20no%20Paypal" class="botao">COMPRAR PAYPAL</a>
+        <a href="https://www.mediafire.com/file/us88vrnqoqlygn1/BOT+AVIATOR+GRATUITO_1.0.apk/file" class="botao">BAIXAR ROBO GRATIS</a>
+    </div>
+    
+    <!-- Seção de Produtos -->
+    <div class="produtos">
+        <div class="produto">
+            <div class="produto-badge">87%</div>
+            <div class="produto-img-container">
+                <img src="b99.jpeg" alt="BOT B99">
+            </div>
+            <h3>BOT B99</h3>
+            <div class="preco">250.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20BOT%20B99%0AVALOR%3A%20250.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <div class="produto-img-container">
+                <img src="predictor.jpeg" alt="BOT GRATUITO">
+            </div>
+            <h3>BOT GRATUITO</h3>
+            <div class="preco">GRATUITO</div>
+            <a href="https://www.mediafire.com/file/us88vrnqoqlygn1/BOT+AVIATOR+GRATUITO_1.0.apk/file" class="botao-produto">BAIXAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <div class="produto-badge">NOVO</div>
+            <div class="produto-img-container">
+                <img src="lampada.jpeg" alt="B99 LÂMPADA">
+            </div>
+            <h3>B99 LÂMPADA</h3>
+            <div class="preco">400.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20B99%20L%C3%82MPADA%0AVALOR%3A%20400.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <div class="produto-badge">TOP</div>
+            <div class="produto-img-container">
+                <img src="predictor.jpeg" alt="AVIATOR PREDICTOR">
+            </div>
+            <h3>AVIATOR PREDICTOR</h3>
+            <div class="preco">1000.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20AVIATOR%20PREDICTOR%0AVALOR%3A%201000.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <div class="produto-img-container">
+                <img src="venom.jpeg" alt="BOT VENOM">
+            </div>
+            <h3>BOT VENOM</h3>
+            <div class="preco">500.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20BOT%20VENOM%0AVALOR%3A%20500.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+        
+        <div class="produto">
+            <div class="produto-img-container">
+                <img src="predictor.jpeg" alt="ROBÔ CYBER">
+            </div>
+            <h3>ROBÔ CYBER</h3>
+            <div class="preco">450.00 MT</div>
+            <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20ROB%C3%94%20CYBER%0AVALOR%3A%20450.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
+        </div>
+    </div>
+    
+    <!-- FAQ Interativo -->
+    <div class="faq-container">
+        <h2 class="faq-titulo">Perguntas Frequentes</h2>
+        
+        <div class="faq-item">
+            <button class="faq-pergunta">
+                Como ativar o robô após a compra?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-resposta">
+                <p>Após o pagamento confirmado, você receberá um e-mail com:</p>
+                <ol>
+                    <li>Arquivo de instalação</li>
+                    <li>Chave de licença</li>
+                    <li>Manual passo-a-passo</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-pergunta">
+                Qual a taxa de acerto dos robôs?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-resposta">
+                <p>Nossos robôs têm desempenho comprovado:</p>
+                <ul>
+                    <li>BOT B99: 85-92% de acerto</li>
+                    <li>AVIATOR PREDICTOR: 78-85%</li>
+                    <li>Versão gratuita: 65-70%</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-pergunta">
+                Tem garantia de reembolso?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-resposta">
+                <p>Oferecemos reembolso 100% em 7 dias se:</p>
+                <ul>
+                    <li>O robô não funcionar conforme demonstrado</li>
+                    <li>Você seguir todas as instruções corretamente</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Popup de Anúncio -->
+    <div class="popup-anuncio" id="popupAnuncio">
+        <button class="fechar-popup" id="fecharPopup">×</button>
+        <div class="popup-imagem">
+            <img src="vip1.png" alt="Anúncio">
+        </div>
+        <div class="popup-conteudo">
+            <div class="popup-texto" id="popupTexto">
+                Ganhe até 500% de bônus no seu primeiro depósito! Registre-se agora e comece a ganhar.
+            </div>
+            <a href="https://www.placard.co.mz/#/" class="popup-botao">REGISTRAR</a>
+        </div>
+    </div>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="contatos">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=258871009140"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <p style="font-size: 14px; color: #999;">Termos e Condições | Política de Reembolso 100%</p>
+        
+        <a href="https://api.whatsapp.com/send?phone=258871009140&text=DENUNCIAR%20FRAUDE" class="botao" style="display: inline-block; margin-top: 15px; max-width: 200px; font-size: 14px;">DENUNCIAR FRAUDES</a>
+    </footer>
+    
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://api.whatsapp.com/send?phone=258871009140" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <script>
+        // 1. Contador de Ganhos em Tempo Real
+        let ganhos = 12450;
+        let usuarios = 128;
+        
+        setInterval(() => {
+            ganhos += Math.floor(Math.random() * 100);
+            usuarios += Math.floor(Math.random() * 3);
+            
+            document.getElementById("ganhos").textContent = `+${ganhos.toLocaleString('pt-MZ', { style: 'currency', currency: 'MZN' })}`;
+            document.getElementById("usuarios").textContent = usuarios;
+        }, 3000);
+        
+        // 2. Controle do Carrossel
+        document.querySelectorAll('.carrossel').forEach(carrossel => {
+            const container = carrossel.querySelector('.slides-container');
+            const slides = carrossel.querySelectorAll('.slide');
+            const prevBtn = carrossel.querySelector('.carrossel-prev');
+            const nextBtn = carrossel.querySelector('.carrossel-next');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            function updateSlide() {
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlide();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            });
+            
+            // Navegação por clique nas imagens
+            slides.forEach(slide => {
+                slide.querySelector('img').addEventListener('click', () => {
+                    window.location.href = "https://www.placard.co.mz/#/";
+                });
+            });
+            
+            // Auto-rotate
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlide();
+            }, 5000);
+        });
+        
+        // 3. FAQ Interativo
+        document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
+            pergunta.addEventListener('click', () => {
+                const item = pergunta.parentElement;
+                item.classList.toggle('active');
+                
+                // Fecha outros itens abertos
+                document.querySelectorAll('.faq-item').forEach(outroItem => {
+                    if (outroItem !== item && outroItem.classList.contains('active')) {
+                        outroItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // 4. Popup de Anúncio
+        const popup = document.getElementById('popupAnuncio');
+        const fecharPopup = document.getElementById('fecharPopup');
+        
+        // Mensagens motivacionais aleatórias
+        const mensagens = [
+            "Junte-se a milhares de vencedores! Registre-se agora e ganhe um bônus exclusivo.",
+            "Seu próximo grande prêmio está esperando! Crie sua conta e comece hoje mesmo.",
+            "Oportunidade única! Cadastre-se agora e receba 100% de bônus no primeiro depósito.",
+            "Transforme pequenas apostas em grandes ganhos! Registre-se para começar."
+        ];
+        
+        // Imagens aleatórias do carrossel
+        const imagensCarrossel = ['50%.png', 'vip1.png', 'vip2.png'];
+        
+        // Configurar popup
+        function configurarPopup() {
+            const mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+            const imagemAleatoria = imagensCarrossel[Math.floor(Math.random() * imagensCarrossel.length)];
+            
+            document.getElementById('popupTexto').textContent = mensagemAleatoria;
+            document.querySelector('.popup-imagem img').src = imagemAleatoria;
+            
+            // Mostrar após 3 segundos
+            setTimeout(() => {
+                popup.style.display = 'flex';
+            }, 3000);
+        }
+        
+        // Fechar popup
+        fecharPopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+        
+        // 5. Efeito de Digitação no Título
+        new TypeIt('.logo h1', {
+            speed: 100,
+            lifeLike: true,
+            cursor: false
+        }).go();
+        
+        // 6. Barra de Progresso de Oferta (animação)
+        let progresso = 30;
+        const limiteBar = document.querySelector('.limite-bar');
+        
+        setInterval(() => {
+            if (progresso > 0) {
+                progresso -= 1;
+                limiteBar.style.width = `${progresso}%`;
+                
+                if (progresso <= 10) {
+                    document.querySelector('.limite-texto').textContent = "ÚLTIMA LICENÇA DISPONÍVEL!";
+                    limiteBar.style.background = "linear-gradient(90deg, var(--vermelho), #ff0000)";
+                }
+            }
+        }, 60000); // Diminui 1% a cada minuto
+        
+        // Iniciar
+        configurarPopup();
+    </script>
+</body>
+</html>
