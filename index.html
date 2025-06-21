@@ -32,19 +32,18 @@
             color: var(--branco);
             margin: 0;
             padding: 0;
-            padding-top: 60px;
+            padding-top: 70px;
         }
         
-        /* Cabeçalho */
+        /* Cabeçalho Moderno */
         header {
-            background-color: var(--preto);
-            padding: 10px 0;
-            border-bottom: 1px solid var(--cinza);
+            background: linear-gradient(135deg, var(--preto) 0%, #1a1a1a 100%);
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         
         .logo {
@@ -55,40 +54,44 @@
         
         .logo h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 26px;
             margin: 0;
-            color: var(--dourado);
+            background: linear-gradient(to right, var(--dourado), #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .logo-icon {
-            width: 25px;
-            height: 25px;
-            margin-right: 8px;
+            width: 28px;
+            height: 28px;
+            margin-right: 10px;
             background-image: url('icone.png');
             background-size: contain;
             background-repeat: no-repeat;
         }
         
-        /* Carrossel Compacto */
+        /* Carrossel Ajustado */
         .carrossel {
-            height: 30px;
-            width: calc(100% - 20px);
-            margin: 10px auto;
+            height: 180px;
+            width: calc(100% - 40px);
+            margin: 20px auto;
             overflow: hidden;
             position: relative;
-            border-radius: 5px;
+            border-radius: 12px;
             border: 1px solid var(--cinza);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
         
         .slides-container {
             display: flex;
             height: 100%;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
         
         .slide {
             min-width: 100%;
             height: 100%;
+            position: relative;
         }
         
         .slide img {
@@ -97,124 +100,188 @@
             object-fit: cover;
         }
         
-        /* Botões Superiores (Lado a Lado) */
+        /* Botões Superiores Melhorados */
         .botoes-topo {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 10px auto;
-            width: calc(100% - 20px);
+            gap: 15px;
+            margin: 25px auto;
+            width: calc(100% - 40px);
         }
         
         .botao {
-            width: 120px;
-            padding: 6px;
+            flex: 1;
+            max-width: 200px;
+            padding: 12px;
             text-align: center;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: 600;
+            border-radius: 8px;
+            font-weight: 700;
             text-decoration: none;
-            border: 1px solid var(--cinza);
-            background-color: var(--preto);
-            color: var(--branco);
+            border: none;
+            background: linear-gradient(135deg, var(--dourado), #f39c12);
+            color: var(--preto);
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
         
         .botao:hover {
-            background-color: var(--dourado);
-            color: var(--preto);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
         
-        /* Seção de Produtos (2x3) */
+        /* Seção de Produtos Atualizada */
         .produtos {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            width: calc(100% - 20px);
-            margin: 20px auto;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            width: calc(100% - 40px);
+            margin: 30px auto;
         }
         
         .produto {
-            background-color: var(--preto);
-            border: 1px solid var(--vermelho);
-            border-radius: 8px;
-            padding: 10px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
             text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .produto:hover {
+            transform: translateY(-5px);
+            border-color: var(--dourado);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .produto-img-container {
+            width: 100%;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            border: 1px solid #333;
         }
         
         .produto img {
             width: 100%;
-            height: 60px;
-            object-fit: contain;
-            border-radius: 5px;
-            margin-bottom: 8px;
+            height: 100%;
+            object-fit: cover;
         }
         
         .produto h3 {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--dourado);
-            margin: 5px 0;
+            margin: 8px 0;
         }
         
         .produto .preco {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
-            margin: 5px 0;
+            margin: 8px 0;
         }
         
         .produto .botao-produto {
             display: block;
-            padding: 5px;
-            font-size: 12px;
-            background-color: var(--vermelho);
+            padding: 8px;
+            background: linear-gradient(135deg, var(--vermelho), #c0392b);
             color: var(--branco);
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 8px;
+            margin-top: 10px;
+            transition: all 0.3s;
         }
         
-        /* Rodapé */
+        .produto .botao-produto:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Rodapé Moderno */
         footer {
-            background-color: var(--preto);
-            padding: 20px 10px;
+            background: #111;
+            padding: 30px 20px;
             text-align: center;
-            border-top: 1px solid var(--cinza);
-            margin-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
         }
         
         .contatos {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .contatos a {
-            color: var(--branco);
-            margin: 0 8px;
-            font-size: 20px;
+            color: var(--dourado);
+            margin: 0 15px;
+            font-size: 24px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .contatos a:hover {
+            transform: translateY(-3px);
         }
         
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background-color: #25D366;
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             text-align: center;
-            font-size: 24px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
             z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: pulse 2s infinite;
         }
         
-        /* Efeitos Visuais */
-        .produto:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Efeitos de Navegação */
+        .carrossel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            border: none;
+            font-size: 20px;
+        }
+        
+        .carrossel-prev {
+            left: 15px;
+        }
+        
+        .carrossel-next {
+            right: 15px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .carrossel {
+                height: 150px;
+            }
+            
+            .produtos {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -229,6 +296,7 @@
     
     <!-- Carrossel -->
     <div class="carrossel">
+        <button class="carrossel-nav carrossel-prev">❮</button>
         <div class="slides-container">
             <div class="slide">
                 <img src="50%.png" alt="Promoção 50%">
@@ -243,6 +311,7 @@
                 <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
             </div>
         </div>
+        <button class="carrossel-nav carrossel-next">❯</button>
     </div>
     
     <!-- Botões Superiores -->
@@ -254,42 +323,54 @@
     <!-- Produtos -->
     <div class="produtos">
         <div class="produto">
-            <img src="b99.jpeg" alt="BOT B99">
+            <div class="produto-img-container">
+                <img src="b99.jpeg" alt="BOT B99">
+            </div>
             <h3>BOT B99</h3>
             <div class="preco">250.00 MT</div>
             <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20BOT%20B99%0AVALOR%3A%20250.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
         </div>
         
         <div class="produto">
-            <img src="predictor.jpeg" alt="BOT GRATUITO">
+            <div class="produto-img-container">
+                <img src="predictor.jpeg" alt="BOT GRATUITO">
+            </div>
             <h3>BOT GRATUITO</h3>
             <div class="preco">GRATUITO</div>
             <a href="https://www.mediafire.com/file/us88vrnqoqlygn1/BOT+AVIATOR+GRATUITO_1.0.apk/file" class="botao-produto">BAIXAR AGORA</a>
         </div>
         
         <div class="produto">
-            <img src="lampada.jpeg" alt="B99 LÂMPADA">
+            <div class="produto-img-container">
+                <img src="lampada.jpeg" alt="B99 LÂMPADA">
+            </div>
             <h3>B99 LÂMPADA</h3>
             <div class="preco">400.00 MT</div>
             <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20B99%20L%C3%82MPADA%0AVALOR%3A%20400.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
         </div>
         
         <div class="produto">
-            <img src="predictor.jpeg" alt="AVIATOR PREDICTOR">
+            <div class="produto-img-container">
+                <img src="predictor.jpeg" alt="AVIATOR PREDICTOR">
+            </div>
             <h3>AVIATOR PREDICTOR</h3>
             <div class="preco">1000.00 MT</div>
             <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20AVIATOR%20PREDICTOR%0AVALOR%3A%201000.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
         </div>
         
         <div class="produto">
-            <img src="venom.jpeg" alt="BOT VENOM">
+            <div class="produto-img-container">
+                <img src="venom.jpeg" alt="BOT VENOM">
+            </div>
             <h3>BOT VENOM</h3>
             <div class="preco">500.00 MT</div>
             <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20BOT%20VENOM%0AVALOR%3A%20500.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
         </div>
         
         <div class="produto">
-            <img src="predictor.jpeg" alt="ROBÔ CYBER">
+            <div class="produto-img-container">
+                <img src="predictor.jpeg" alt="ROBÔ CYBER">
+            </div>
             <h3>ROBÔ CYBER</h3>
             <div class="preco">450.00 MT</div>
             <a href="https://api.whatsapp.com/send?phone=258871009140&text=NOME%20DO%20PRODUTO%3A%20ROB%C3%94%20CYBER%0AVALOR%3A%20450.00%20MT%0A%0APe%C3%A7o%20o%20n%C3%BAmero%20do%20pagamento" class="botao-produto">COMPRAR AGORA</a>
@@ -297,7 +378,8 @@
     </div>
     
     <!-- Segundo Carrossel -->
-    <div class="carrossel" style="margin-top: 15px;">
+    <div class="carrossel" style="margin-top: 30px;">
+        <button class="carrossel-nav carrossel-prev">❮</button>
         <div class="slides-container">
             <div class="slide">
                 <img src="50%.png" alt="Promoção 50%">
@@ -312,6 +394,7 @@
                 <a href="https://www.placard.co.mz/#/" class="slide-link"></a>
             </div>
         </div>
+        <button class="carrossel-nav carrossel-next">❯</button>
     </div>
     
     <!-- Rodapé -->
@@ -322,9 +405,9 @@
             <a href="https://api.whatsapp.com/send?phone=258871009140"><i class="fab fa-whatsapp"></i></a>
         </div>
         
-        <p style="font-size: 12px;">Termos e Condições | Política de Reembolso 100%</p>
+        <p style="font-size: 14px; color: #999;">Termos e Condições | Política de Reembolso 100%</p>
         
-        <a href="https://api.whatsapp.com/send?phone=258871009140&text=DENUNCIAR%20FRAUDE" class="botao" style="display: inline-block; margin-top: 10px; font-size: 12px; padding: 5px 10px;">DENUNCIAR FRAUDES</a>
+        <a href="https://api.whatsapp.com/send?phone=258871009140&text=DENUNCIAR%20FRAUDE" class="botao" style="display: inline-block; margin-top: 15px; max-width: 200px; font-size: 14px;">DENUNCIAR FRAUDES</a>
     </footer>
     
     <!-- Botão Flutuante do WhatsApp -->
@@ -334,17 +417,50 @@
     
     <script>
         // Controle do Carrossel
-        let currentIndex = 0;
-        const containers = document.querySelectorAll('.slides-container');
-        
-        function moveSlide() {
-            currentIndex = (currentIndex + 1) % 3;
-            containers.forEach(container => {
+        document.querySelectorAll('.carrossel').forEach(carrossel => {
+            const container = carrossel.querySelector('.slides-container');
+            const slides = carrossel.querySelectorAll('.slide');
+            const prevBtn = carrossel.querySelector('.carrossel-prev');
+            const nextBtn = carrossel.querySelector('.carrossel-next');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            function updateSlide() {
                 container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlide();
             });
-        }
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            });
+            
+            // Auto-rotate
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlide();
+            }, 5000);
+        });
         
-        setInterval(moveSlide, 3000);
+        // Efeito de digitação no título (opcional)
+        const title = document.querySelector('.logo h1');
+        const originalText = title.textContent;
+        title.textContent = '';
+        
+        let i = 0;
+        const typingEffect = setInterval(() => {
+            if (i < originalText.length) {
+                title.textContent += originalText.charAt(i);
+                i++;
+            } else {
+                clearInterval(typingEffect);
+            }
+        }, 100);
     </script>
 </body>
-    </html>
+            </html>
