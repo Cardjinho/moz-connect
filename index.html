@@ -3,29 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat IA Premium</title>
+    <title>GPT Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <div class="logo">
-                <i class="fas fa-robot"></i>
-                <h1>Assistente IA</h1>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="new-chat-btn">
+                <i class="fas fa-plus"></i>
+                <span>Nova conversa</span>
             </div>
-            <div class="status">
-                <span class="online-dot"></span>
-                <span>Online</span>
+            <div class="history-panel">
+                <!-- Histórico de conversas -->
             </div>
-        </div>
-        <div class="chat-messages" id="chat-messages"></div>
-        <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Digite sua mensagem..." autofocus>
-            <button id="send-button"><i class="fas fa-paper-plane"></i></button>
-        </div>
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="username">Usuário</span>
+            </div>
+        </aside>
+        
+        <main class="chat-container">
+            <div class="chat-header">
+                <h1>GPT-4</h1>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <!-- Mensagens aparecerão aqui -->
+            </div>
+            
+            <div class="input-container">
+                <div class="input-box">
+                    <input type="text" id="user-input" placeholder="Envie uma mensagem..." autofocus>
+                    <button id="send-button">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <p class="disclaimer">GPT Premium pode cometer erros. Verifique informações importantes.</p>
+            </div>
+        </main>
     </div>
+
     <script src="script.js"></script>
 </body>
-  </html>
+                        </html>
