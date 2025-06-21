@@ -1,80 +1,85 @@
+// Configuração da API (agora via endpoint do Vercel)
+const API_ENDPOINT = '/api/chat';  // Isso apontará para sua função serverless
+
+// Elementos do DOM
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 
-// ✅ SUA CHAVE DE API (OpenAI)
-const API_KEY = "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";
+// Histórico de conversa (opcional)
+let conversationHistory = [];
 
-// Adiciona mensagem ao chat
-function addMessage(text, isUser) {
+// Função para adicionar mensagens ao chat
+function addMessage(content, isUser) {
     const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
-    messageDiv.textContent = text;
+    messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
+    messageDiv.innerHTML = `
+        <div class="avatar">${isUser ? '👤' : '🤖'}</div>
+        <div class="content">${content}</div>
+    `;
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// Mostra "Digitando..."
+// Função para mostrar "digitando..."
 function showTyping() {
     const typingDiv = document.createElement('div');
-    typingDiv.classList.add('message', 'bot-message', 'typing');
-    typingDiv.textContent = "Digitando";
+    typingDiv.className = 'message ai-message typing';
+    typingDiv.innerHTML = `
+        <div class="avatar">🤖</div>
+        <div class="content">Digitando<span class="dots">...</span></div>
+    `;
     chatMessages.appendChild(typingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     return typingDiv;
 }
 
-// Remove "Digitando..."
-function removeTyping(typingElement) {
-    typingElement.remove();
-}
+// Função principal para enviar mensagens
+async function sendMessage() {
+    const message = userInput.value.trim();
+    if (!message) return;
 
-// Envia mensagem para a OpenAI
-async function sendMessageToAI(message) {
+    addMessage(message, true);
+    userInput.value = '';
+    
     const typingElement = showTyping();
 
     try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
+        const response = await fetch(API_ENDPOINT, {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${API_KEY}`
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: message }],
-                temperature: 0.7
+                message: message,
+                // history: conversationHistory // (opcional para contexto)
             })
         });
 
         const data = await response.json();
-        const aiResponse = data.choices[0].message.content;
-
-        removeTyping(typingElement);
-        addMessage(aiResponse, false);
+        addMessage(data.response, false);
+        
+        // Atualiza histórico (opcional)
+        conversationHistory.push(
+            { role: 'user', content: message },
+            { role: 'assistant', content: data.response }
+        );
+        
     } catch (error) {
-        removeTyping(typingElement);
-        addMessage("❌ Erro ao conectar com a IA", false);
-        console.error("Erro:", error);
+        addMessage('⚠️ Erro ao conectar com a IA. Tente novamente.', false);
+        console.error('Erro:', error);
+    } finally {
+        typingElement.remove();
     }
 }
 
-// Evento de enviar mensagem
-function handleSendMessage() {
-    const message = userInput.value.trim();
-    if (message) {
-        addMessage(message, true);
-        userInput.value = "";
-        sendMessageToAI(message);
-    }
-}
-
-sendButton.addEventListener('click', handleSendMessage);
+// Event Listeners
+sendButton.addEventListener('click', sendMessage);
 userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSendMessage();
+    if (e.key === 'Enter') sendMessage();
 });
 
-// Mensagem inicial
-setTimeout(() => {
-    addMessage("Olá! Sou sua IA assistente. Como posso ajudar? 😊", false);
-}, 1000);
+// Mensagem inicial (opcional)
+window.addEventListener('DOMContentLoaded', () => {
+    addMessage("Olá! Sou seu assistente de IA. Como posso ajudar?", false);
+});
