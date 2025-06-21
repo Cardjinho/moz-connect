@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Awesome</title>
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Fonte) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Efeito de Partículas (Fundo Dinâmico) */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        /* Título */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Botão */
+        .btn-home {
+            background: linear-gradient(45deg, #6e45e2, #88d3ce);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Ícones e Opções */
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .option {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            width: 120px;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .option i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #6e45e2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeito de Partículas -->
+    <div id="particles-js"></div>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <h1>PORTAL AWESOME</h1>
+        <p>Bem-vindo ao futuro! Escolha uma opção ou acesse a página inicial.</p>
+        
+        <!-- Opções com Ícones -->
+        <div class="options">
+            <div class="option">
+                <i class="fas fa-gamepad"></i>
+                <p>Jogos</p>
+            </div>
+            <div class="option">
+                <i class="fas fa-music"></i>
+                <p>Música</p>
+            </div>
+            <div class="option">
+                <i class="fas fa-film"></i>
+                <p>Filmes</p>
+            </div>
+        </div>
+        
+        <!-- Botão para Home -->
+        <button class="btn-home" onclick="window.location.href='home'">
+            <i class="fas fa-home"></i> Ir para Home
+        </button>
+    </div>
+    
+    <!-- Script do Efeito de Partículas -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Configuração do Efeito de Partículas
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { random: true, value: 0.5 },
+                size: { random: true, value: 3 },
+                line_linked: { enable: true, distance: 150, color: "#6e45e2", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3 }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
